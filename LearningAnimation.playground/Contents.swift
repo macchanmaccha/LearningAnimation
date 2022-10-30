@@ -34,6 +34,7 @@ struct ContentView: View {
 
 // Viewの形状やエフェクトの変化に対して、アニメーションをつける場合は
 // .animation(_,value:)
+// valueには変数を指定。この変数が変更したらアニメートするよってもの
 struct ContentView: View {
     @State var circleCenter = CGPoint.zero
     @State var isCircleScaled = false

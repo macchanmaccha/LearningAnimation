@@ -31,3 +31,31 @@ struct ContentView: View {
         }
     }
 }
+
+// Viewの形状やエフェクトの変化に対して、アニメーションをつける場合は
+// .animation(_,value:)
+struct ContentView: View {
+    @State var circleCenter = CGPoint.zero
+    @State var isCircleScaled = false
+
+    var body: some View {
+        VStack {
+            Circle()
+                .frame(width: 50, height: 50)
+                .scaleEffect(isCircleScaled ? 2 : 1)
+                .animation(.easeInOut, value: isCircleScaled)
+                .offset(x: circleCenter.x - 25, y: circleCenter.y - 25)
+                .animation(.spring(response: 0.3, dampingFraction: 0.1), value: circleCenter)
+                .gesture(
+                    DragGesture(minimumDistance: 0).onChanged { value in
+                        circleCenter = value.location
+                    }
+                )
+
+            Toggle(
+                "Scale",
+                isOn: $isCircleScaled
+            )
+        }
+    }
+}

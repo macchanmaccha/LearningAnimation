@@ -13,13 +13,11 @@ struct ContentView: View {
                     .fill(Color.blue)
                     .frame(width: 100, height: 100)
                     .scaleEffect(flag ? 1.0 : 2.0)
-                
                 Circle()
                     .fill(Color.red)
                     .frame(width: 200, height: 200)
                     .scaleEffect(flag ? 1.0 : 0.5)
             }
- 
             VStack {
                 Spacer()
                 Button("アニメーション") {
@@ -38,7 +36,6 @@ struct ContentView: View {
 struct ContentView: View {
     @State var circleCenter = CGPoint.zero
     @State var isCircleScaled = false
-
     var body: some View {
         VStack {
             Circle()
@@ -52,7 +49,6 @@ struct ContentView: View {
                         circleCenter = value.location
                     }
                 )
-
             Toggle(
                 "Scale",
                 isOn: $isCircleScaled
